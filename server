@@ -67,7 +67,10 @@ if options.use_tls:
     # TODO
     # Wrap listen_socket in TLS and assign the resulting socket.SSLSocket back
     # to the listen_socket variable.
-    raise NotImplementedError("TLS mode not implemented")
+    context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    context.verify_mode = ssl.CERT_NONE
+    context.load_cert_chain(options.tls_cert_filename, options.tls_key_filename)
+    listen_socket = context.wrap_socket(listen_socket)
 
 while True:
     # select.select will notify us which sockets are ready to read.
