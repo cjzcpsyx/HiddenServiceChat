@@ -35,7 +35,23 @@ def connect(remote_address):
 def connect_with_socks(remote_address, socks_address):
     hostname, port = remote_address
     # TODO
-    raise NotImplementedError("connect_with_socks not implemented")
+    s = socket.socket(socket.AF_INET)
+    s.connect(socks_address)
+    # pack up message for SOCKS4a
+    message = b''
+    message += struct.pack('!B', 4)
+    message += struct.pack('!B', 1)
+    message += struct.pack('!H', port)
+    message += struct.pack('!4B', 0, 0, 0, 255)
+    message += struct.pack('!B', 0)
+    message += hostname.encode() + '\x00'.encode()
+    # send the packed message and resolve response
+    s.send(message)
+    status = s.recv(16)[1]
+    if status == 0x5a:
+        return s
+    else:
+        raise socket.error
 
 # Parse command line options.
 opts, args = getopt.gnu_getopt(sys.argv[1:], "",
