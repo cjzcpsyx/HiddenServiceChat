@@ -1,4 +1,7 @@
 1.
-2.
+
+2. Use HiddenServiceAuthorizeClient auth-type client-name,client-name,… If configured, the hidden service is accessible for authorized clients only. Only clients that are listed here are authorized to access the hidden service.
+
 3.0 is sys.stdin.fileno(), 1 is sys.stdout.fileno(), 2 is sys.stderr.fileno(), 3 is listen_socket.fileno()
+
 4.
