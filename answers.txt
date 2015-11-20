@@ -2,6 +2,6 @@
 
 2. Use HiddenServiceAuthorizeClient auth-type client-name,client-name,… If configured, the hidden service is accessible for authorized clients only. Only clients that are listed here are authorized to access the hidden service.
 
-3.0 is sys.stdin.fileno(), 1 is sys.stdout.fileno(), 2 is sys.stderr.fileno(), 3 is listen_socket.fileno()
+3. 0 is sys.stdin.fileno(), 1 is sys.stdout.fileno(), 2 is sys.stderr.fileno(), 3 is listen_socket.fileno()
 
-4.
+4. Two different users cannot access the Tor server on the same port, even if they are using different machines; this made testing and general use unwieldy. We recommend that the developers clarify why the service was built in this manner, and discuss the use of multiple users on the same port. 
