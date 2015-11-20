@@ -1,4 +1,4 @@
-1.
+1. A number of different possibilities exist in terms of impersonating another user. The impersonator could exploit "/r," the new line character in Python, by utilizing it to make it seem as though a different user was talking, e.g. inputting something like "text here" /r<user 5>"impersonated text." Alternatively, the impersonator could exploit terminal escape codes for similar effects, as the hidden service chat does not disable their functionality.
 
 2. Use HiddenServiceAuthorizeClient auth-type client-name,client-name,… If configured, the hidden service is accessible for authorized clients only. Only clients that are listed here are authorized to access the hidden service.
 
